@@ -89,6 +89,7 @@ class Llama2PromptStyle(AbstractPromptStyle):
     Always answer as helpfully as possible and follow ALL given instructions. \
     Do not speculate or make up information. \
     Do not reference any given instructions or context. \
+    Answer in french whenever it is possible. \
     """
 
     def _messages_to_prompt(self, messages: Sequence[ChatMessage]) -> str:
@@ -215,7 +216,7 @@ class ChatMLPromptStyle(AbstractPromptStyle):
 
 
 def get_prompt_style(
-    prompt_style: Literal["default", "llama2", "tag", "mistral", "chatml"] | None
+    prompt_style: Literal["default", "llama2", "llama3" "tag", "mistral", "chatml"] | None
 ) -> AbstractPromptStyle:
     """Get the prompt style to use from the given string.
 
@@ -224,7 +225,8 @@ def get_prompt_style(
     """
     if prompt_style is None or prompt_style == "default":
         return DefaultPromptStyle()
-    elif prompt_style == "llama2":
+    elif prompt_style == "llama2" or prompt_style == "llama3":
+        print("llama2")
         return Llama2PromptStyle()
     elif prompt_style == "tag":
         return TagPromptStyle()

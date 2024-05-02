@@ -117,7 +117,7 @@ class NodeStoreSettings(BaseModel):
 class LlamaCPPSettings(BaseModel):
     llm_hf_repo_id: str
     llm_hf_model_file: str
-    prompt_style: Literal["default", "llama2", "tag", "mistral", "chatml"] = Field(
+    prompt_style: Literal["default", "llama2", "llama3" "tag", "mistral", "chatml"] = Field(
         "llama2",
         description=(
             "The prompt style to use for the chat engine. "
@@ -256,6 +256,10 @@ class OllamaSettings(BaseModel):
     request_timeout: float = Field(
         120.0,
         description="Time elapsed until ollama times out the request. Default is 120s. Format is float. ",
+    )
+    prompt_style: Literal["llama2", "llama3", "mistral"] = Field(
+        "llama2",
+        description=("The prompt style to use for the chat engine."),
     )
 
 

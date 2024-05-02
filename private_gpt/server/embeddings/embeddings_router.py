@@ -9,7 +9,8 @@ from private_gpt.server.embeddings.embeddings_service import (
 )
 from private_gpt.server.utils.auth import authenticated
 
-embeddings_router = APIRouter(prefix="/v1", dependencies=[Depends(authenticated)])
+embeddings_router = APIRouter(
+    prefix="/v1", dependencies=[Depends(authenticated)])
 
 
 class EmbeddingsBody(BaseModel):
